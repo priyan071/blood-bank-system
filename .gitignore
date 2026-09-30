@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production build outputs
+dist/
+client/dist/
+build/
+
+# Environment and sensitive keys
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS metadata
+.DS_Store
+*/.DS_Store
+Thumbs.db
+
+# Vercel deployment artifacts
+.vercel/
+
+# IDE / Editor
+.vscode/
+.idea/
