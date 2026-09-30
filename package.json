@@ -1,0 +1,14 @@
+{
+  "name": "hemovault-blood-bank",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Centralized Blood Bank Management System (MERN Stack)",
+  "scripts": {
+    "build": "npm --prefix client run build",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev"
+  },
+  "keywords": ["blood-bank", "mern", "vite", "express", "mongodb"],
+  "author": "Priyan R (310624148072)"
+}
