@@ -16,6 +16,12 @@ const connectDB = async () => {
     console.log(`[MongoDB] Connected successfully to external instance: ${mongoose.connection.host}/${mongoose.connection.name}`);
   } catch (err) {
     console.warn(`[MongoDB] Could not connect to standard URI (${uri}): ${err.message}`);
+    // In serverless / Vercel environment, MongoMemoryServer cannot run due to lambda limits
+    if (process.env.VERCEL) {
+      console.error('[MongoDB] Running on Vercel without a working MONGODB_URI. Please set MONGODB_URI in Vercel Project Settings.');
+      return null;
+    }
+
     console.log('[MongoDB] Starting embedded high-performance MongoDB instance (MongoMemoryServer)...');
     
     try {
@@ -30,7 +36,9 @@ const connectDB = async () => {
       console.log(`[MongoDB] Connected successfully to embedded instance: ${memoryUri}`);
     } catch (memErr) {
       console.error('[MongoDB] Fatal error initializing database:', memErr.message);
-      process.exit(1);
+      if (!process.env.VERCEL) {
+        process.exit(1);
+      }
     }
   }
 
